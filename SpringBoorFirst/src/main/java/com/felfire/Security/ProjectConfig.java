@@ -20,18 +20,19 @@ public class ProjectConfig {
         http.httpBasic(Customizer.withDefaults());
 
         http.authorizeHttpRequests(c -> c.anyRequest().authenticated());
-        return http.build();
-    }
-    
-    @Bean
-    UserDetailsService userDetailsService() {
+
         UserDetails user = User.withUsername("john")
                     .authorities("read")
                     .password("12345")
                     .build();
-        return new InMemoryUserDetailsManager(user);
-    }
 
+        UserDetailsService userDetailsService = new InMemoryUserDetailsManager(user);            
+        http.userDetailsService(userDetailsService);  
+
+        return http.build();
+
+    }
+    
     @Bean
     PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
