@@ -1,11 +1,17 @@
 package com.felfire.SpringBoorFirst;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component("renderer")
 public class StandardOutMessageRenderer implements MessageRenderer{
 
     private MessageProvider messageProvider;
 
-    public StandardOutMessageRenderer() {
+    public StandardOutMessageRenderer(@Qualifier("provider2") MessageProvider messageProvider) {
         System.out.println(" --> StandardOutMessageRenderer: constructor called");
+        this.messageProvider = messageProvider;
+        System.out.println(" --> StandardOutMessageRenderer: Injecting dependency using constructor");
     }
 
     @Override

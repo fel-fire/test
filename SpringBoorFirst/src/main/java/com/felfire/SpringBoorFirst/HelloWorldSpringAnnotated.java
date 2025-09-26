@@ -7,8 +7,14 @@ public class HelloWorldSpringAnnotated {
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(HelloWorldConfiguration.class);
-        MessageRenderer mr = context.getBean("messageRenderer", StandardOutMessageRenderer.class);
+        System.out.println("""
+            ---------------------------------------------------------------------------
+            ------------------Application HelloWorldSpring is launched!----------------
+            ---------------------------------------------------------------------------
+                    """);
+        MessageRenderer mr = context.getBean("renderer", StandardOutMessageRenderer.class);
         mr.render();
+
     }
 
 }
