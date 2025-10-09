@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class KeyHelper {
     public void open() {
-        System.out.println(this.toString() + ": try to open"+ Math.random());
+        //System.out.println(this.toString() + ": try to open"+ Math.random());
     }
 }
